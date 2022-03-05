@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+<i class="bi bi-card-checklist mx-3" style="font-size: 2rem; color: cornflowerblue;">&emsp;Dodaj czytelnika</i>
+<div class="container-fluid border border-primary rounded m-2 p-2 bg-light" style="width: 100%">
+    <form action="#" th:action="@{/users/saveUser}" th:object="${user}" method="POST">
+        <input type="hidden" th:field="*{id}"></br>
+        <input class="form-control" aria-label="Imię i nazwisko czytelnika" aria-describedby="basic-addon1" type="text" th:field="*{name}" th:placeholder="'Wpisz imię i nazwisko'"/></br>
+        <div>Ustaw status</div>
+        <div>
+            <input type="radio" th:field="*{active}" th:value="true" th:text="'Aktywny'"/>
+            <input type="radio" th:field="*{active}" th:value="false" th:text="'Nieaktywny'"/>
+        </div>
+
+        <button class="btn btn-info btn-lg shadow form-control text-decoration-none text-light mt-2" role="button" style="width: 100%" type="submit">Zapisz</button>
+    </form>
+</div>
+
+
+<div><a class="btn btn-info btn-lg shadow form-control text-decoration-none text-light mt-2" role="button" style="width: 100%" href="/users/showAllUsers">Powrót</a></div>
+</body>
+</html>

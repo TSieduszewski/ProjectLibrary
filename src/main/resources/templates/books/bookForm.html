@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+<i class="bi bi-card-checklist mx-3" style="font-size: 2rem; color: cornflowerblue;">&emsp;Dodaj książkę</i>
+<div class="container-fluid border border-primary rounded m-2 p-2 bg-light" style="width: 100%">
+    <form action="#" th:action="@{/books/saveBook}" th:object="${book}" method="POST">
+        <input type="hidden" th:field="*{id}"></br>
+        <input type="hidden" th:field="*{status}"></br>
+        <input class="form-control" aria-label="Wpisz tytuł książki" aria-describedby="basic-addon1" type="text" th:field="*{title}" th:placeholder="'Wpisz tytuł książki'"/></br>
+        <input class="form-control" aria-label="Wpisz autora książki" aria-describedby="basic-addon1" type="text" th:field="*{author}" th:placeholder="'Wpisz autora książki'"/></br>
+        <input class="form-control" aria-label="Wpisz numer wewnętrzny książki" aria-describedby="basic-addon1" type="text" th:field="*{number}" th:placeholder="'Wpisz numer wewnętrzny książki'"/></br>
+        <button class="btn btn-info btn-lg shadow form-control text-decoration-none text-light mt-2" role="button" style="width: 100%" type="submit">Zapisz</button>
+    </form>
+</div>
+<div><a class="btn btn-info btn-lg shadow form-control text-decoration-none text-light mt-2" role="button" style="width: 100%" href="/books/listofbooks">Powrót</a></div>
+</body>
+</html>

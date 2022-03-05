@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+<i class="bi bi-card-checklist mx-3" style="font-size: 2rem; color: cornflowerblue;">&emsp;Lista czytelników</i>
+<table class="table table-striped">
+    <thead class="bg-primary bg-gradient text-white shadow ">
+    <th>Imię i nazwisko</th>
+    <th>Status</th>
+    <th>Edytuj</th>
+    <th>Usuń</th>
+    <th>Zmień status</th>
+
+    </thead>
+    <tbody>
+    <tr class="align-middle" th:each="tempUsers : ${allUsers}">
+
+        <td th:text="${tempUsers.name}"/>
+        <td th:text="${tempUsers.active} ? 'Aktywny' : 'Nieaktywny'"/>
+        <td><a class="btn btn-outline-primary btn-sm shadow form-control" role="button" th:href="@{/users/editUser(id=${tempUsers.id})}" th:text="'Edytuj'"/></td>
+        <td><a class="btn btn-outline-primary btn-sm shadow form-control" role="button" th:href="@{/users/delete(id=${tempUsers.id})}" th:text="'Usuń'"/></td>
+        <td><a class="btn btn-outline-primary btn-sm shadow form-control" role="button" th:href="@{/users/changeStatus(id=${tempUsers.id})}" th:text="'Zmień status'"/></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<div><button class="btn btn-info btn-lg mt-1" style="width: 100%"><a class="text-decoration-none text-light" th:href="@{/users/addUser}" th:text="'Dodaj czytelnika'"/></button></div>
+<div><a class="btn btn-info btn-lg shadow form-control text-decoration-none text-light mt-2" role="button" style="width: 100%" th:href="@{/menu}" th:text="'Powrót do menu'"/></div>
+</body>
+</html>
